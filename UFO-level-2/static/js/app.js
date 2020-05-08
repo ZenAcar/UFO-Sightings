@@ -27,7 +27,13 @@ filter_button.on("click", function() {
     var input3 = filter_bar_3.property("value");
     var input4 = filter_bar_4.property("value");
 
-    var filtered_data = tableData.filter(ufo => ufo.datetime === input0 && ufo.city === input1 && ufo.state === input2 && ufo.country === input3 && ufo.shape === input4);
+    var filtered_data = tableData.filter(ufo =>
+        ufo.datetime === input0 &&
+        ufo.city === input1 &&
+        ufo.state === input2 &&
+        ufo.country === input3 &&
+        ufo.shape === input4
+    );
 
     reset_data(filtered_data);
 
