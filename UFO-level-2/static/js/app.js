@@ -95,7 +95,7 @@ function runEnter() {
 function reset() {
 
     // Clear the input elements
-    d3.select("datetime").value = "";
+    d3.select("#datetime").value = "";
     d3.select("#city").value = "";
     d3.select("#state").value = "";
     d3.select("#country").value = "";
