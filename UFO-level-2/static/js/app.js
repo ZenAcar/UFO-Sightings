@@ -1,11 +1,16 @@
-// Setup
-
+// Assign the data from `data.js` to a descriptive variable
 var tableData = data;
 
+console.log(tableData);
+
+// Setup
+
+// Select the tbody
 var tbody = d3.select("tbody");
-
+// Select the buttons
 var filter_button = d3.select("#filter-btn");
-
+var clear_button = d3.select("#clear-btn");
+// Select the input elements and get the raw HTML node
 var filter_bar_0 = d3.select("#datetime");
 var filter_bar_1 = d3.select("#city");
 var filter_bar_2 = d3.select("#state");
@@ -13,43 +18,92 @@ var filter_bar_3 = d3.select("#country");
 var filter_bar_4 = d3.select("#shape");
 
 
-// Creates filter button on click to filter by datetime, city and state at once.
+// Create a function to display the data list
 
-filter_button.on("click", function() {
+table(tableData);
 
-    d3.event.preventDefault();
+function table() {
+    data.forEach((ufo) => {
+        var tr = tbody.append("tr");
+        for (key in ufo) {
+            tr.append("td").text(ufo[key]);
+        }
+    });
+};
 
-    tbody.html("");
 
+// Create event handlers
+
+filter_button.on("click", runEnter);
+clear_button.on("click", reset);
+
+
+// Complete the filter button function 
+
+function runEnter() {
+
+    // Get the value property of the input elements
     var input0 = filter_bar_0.property("value");
     var input1 = filter_bar_1.property("value");
     var input2 = filter_bar_2.property("value");
     var input3 = filter_bar_3.property("value");
     var input4 = filter_bar_4.property("value");
 
-    var filtered_data = tableData.filter(ufo =>
-        ufo.datetime === input0 &&
-        ufo.city === input1 &&
-        ufo.state === input2 &&
-        ufo.country === input3 &&
-        ufo.shape === input4
-    );
+    var filteredData = tableData;
 
-    reset_data(filtered_data);
+    // Define conditions for filteredData
 
-});
+    if (input0) {
+        filteredData = filteredData.filter(data => data.datetime === input0);
+    }
 
-function reset_data(filtered_data) {
-    filtered_data.forEach(table);
+    if (input1) {
+        filteredData = filteredData.filter(data => data.city === input1);
+    }
+
+    if (input2) {
+        filteredData = filteredData.filter(data => data.state === input2);
+    }
+
+    if (input3) {
+        filteredData = filteredData.filter(data => data.country === input3);
+    }
+
+    if (input4) {
+        filteredData = filteredData.filter(data => data.shape === input4);
+    }
+
+    if (filteredData != tableData) {
+        tbody.selectAll('tr').remove();
+        tbody.selectAll('td').remove();
+
+        filteredData.forEach((search) => {
+            var new_tr = tbody.append("tr");
+            for (key in search) {
+                new_tr.append("td").text(search[key]);
+            }
+        })
+    } else {
+        // Revert to displaying all the ufo sightings in a table format
+        table(tableData);
+    }
 };
 
-function table(tableData) {
 
-    var tr = tbody.append("tr");
+// Complete the reset button function 
 
-    Object.entries(tableData).forEach(([key, value]) => {
-        tr.append("td").text(value);
-    })
-};
+function reset() {
 
-tableData.forEach(table);
+    // Clear the input elements
+    d3.select("datetime").value = "";
+    d3.select("#city").value = "";
+    d3.select("#state").value = "";
+    d3.select("#country").value = "";
+    d3.select("#shape").value = "";
+
+    // Remove any children from the table
+    tbody.html("");
+
+    // Revert to displaying all the ufo sightings in the table format
+    table(tableData);
+}
