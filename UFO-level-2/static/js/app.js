@@ -3,6 +3,17 @@ var tableData = data;
 
 console.log(tableData);
 
+// Create a Reset button
+
+const newButton = document.createElement("button");
+const panelBody = document.getElementsByClassName("panel-body")[0];
+newButton.id = "clear-btn";
+newButton.className = "btn btn-default";
+newButton.appendChild(document.createTextNode("Reset"));
+panelBody.appendChild(newButton);
+
+console.log(newButton);
+
 // Setup
 
 // Select the tbody
