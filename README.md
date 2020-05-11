@@ -1,6 +1,6 @@
 # JavaScript Homework - JavaScript and DOM Manipulation
 
-https://github.com/ZenAcar/UFO.github.io
+https://zenacar.github.io/UFO.github.io/
 
 ## Background
 
