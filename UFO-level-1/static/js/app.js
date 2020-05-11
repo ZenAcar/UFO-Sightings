@@ -72,7 +72,8 @@ function runEnter() {
 function reset() {
 
     // Clear the input element
-    d3.select("datetime").value = "";
+    // input0 = "";
+    document.getElementById("datetime").value = "";
 
     // Remove any children from the table
     tbody.html("");

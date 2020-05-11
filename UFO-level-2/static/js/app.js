@@ -94,12 +94,17 @@ function runEnter() {
 
 function reset() {
 
-    // Clear the input elements
-    d3.select("#datetime").value = "";
-    d3.select("#city").value = "";
-    d3.select("#state").value = "";
-    d3.select("#country").value = "";
-    d3.select("#shape").value = "";
+    //Clear the input elements
+    // input0 = "";
+    // input1 = "";
+    // input2 = "";
+    // input3 = "";
+    // input4 = "";
+    document.getElementById("datetime").value = "";
+    document.getElementById("city").value = "";
+    document.getElementById("state").value = "";
+    document.getElementById("country").value = "";
+    document.getElementById("shape").value = "";
 
     // Remove any children from the table
     tbody.html("");
