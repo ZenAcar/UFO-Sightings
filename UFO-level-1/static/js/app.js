@@ -3,20 +3,8 @@ var tableData = data;
 
 console.log(tableData);
 
+
 // Setup
-
-const newButton = document.createElement("button");
-const container = document.getElementsByClassName("container");
-
-newButton.id = "clear-btn";
-newButton.type = "button";
-newButton.className = "btn btn-default";
-newButton.appendChild(document.createTextNode("Reset"));
-
-// container.appendChild(newButton);
-console.log(newButton);
-
-
 
 // Select the tbody
 var tbody = d3.select("tbody");
