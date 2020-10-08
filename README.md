@@ -1,8 +1,7 @@
 # UFO Sightings - JavaScript and DOM Manipulation
 
 * The live deployed webpage can be found here
-UFO Sightings [here](https://zenacar.github.io/UFO.github.io/)
-
+[UFO Sightings](https://zenacar.github.io/UFO.github.io/)
 
 A responsive web application to visualize the collection of all the reported UFO sightings using JavaScript, HTML5, CSS3 and D3.js. The report data from the dataset is presented dynamically in a table format and users can filter the table data for specific values based on search criteria.
 
